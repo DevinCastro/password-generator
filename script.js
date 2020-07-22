@@ -9,12 +9,12 @@ let special = ['+', '-', '&', '!', '(', ')', '{', '}', '[', ']', '^', '~', '*', 
 
 
 function generatePassword() {
-  let length = prompt('How many characters would you like the password to be? (Between 8-128')
-  let charType = prompt('How many characters would you like the password to be? (Between 8-128')
+  let length = prompt('How many characters would you like the password to be? (Between 8-128)')
+  prompt('Would you like upper case characters?')
   let password
 
-  for (i = 8, i <= length; i++) {
-
+  for (i = 1; i <= length; i++) {
+    console.log(i)
   }
 
 }
