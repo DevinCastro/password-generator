@@ -10,13 +10,19 @@ let special = ['+', '-', '&', '!', '(', ')', '{', '}', '[', ']', '^', '~', '*', 
 
 function generatePassword() {
   let length = prompt('How many characters would you like the password to be? (Between 8-128)')
-  prompt('Would you like upper case characters?')
-  let password
+  let upperChoice = confirm('Would you like upper case characters?')
+  let lowerChoice = confirm('Would you like lower case characters?')
+  let numberChoice = confirm('Would you like numbers?')
+  let specialChoice = confirm('Would you like special characters?')
+  let password = ''
 
-  for (i = 1; i <= length; i++) {
-    console.log(i)
+  if (upperChoice) {
+    for (i = 1; i <= length; i++) {
+      password += upperCase[Math.floor(Math.random() * upperCase.length)]
+      console.log(i)
+    }
   }
-
+  return password
 }
 
 
@@ -27,8 +33,6 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
-
 }
 
 // Add event listener to generate button
