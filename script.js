@@ -7,6 +7,8 @@ let lowerCase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm'
 let numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
 let special = ['+', '-', '&', '!', '(', ')', '{', '}', '[', ']', '^', '~', '*', '?', ':']
 
+let totalPossibleCharacters = []
+
 
 function generatePassword() {
   let length = prompt('How many characters would you like the password to be? (Between 8-128)')
@@ -15,6 +17,8 @@ function generatePassword() {
   let numberChoice = confirm('Would you like numbers?')
   let specialChoice = confirm('Would you like special characters?')
   let password = ''
+
+
 
   if (upperChoice) {
     for (i = 1; i <= length; i++) {
@@ -38,8 +42,20 @@ function generatePassword() {
     }
   }
 
+  // if (upperChoice) {
+  //   let totalPossibleCharacters = upperCase[Math.floor(Math.random() * upperCase.length)]
+  // } else if (upperChoice && lowerChoice) {
+  //   let totalPossibleCharacters = upperCase[Math.floor(Math.random() * upperCase.length)] + lowerCase[Math.floor(Math.random() * lowerCase.length)]
+  // } else if (numberChoice) {
+  //   let totalPossibleCharacters = upperCase[Math.floor(Math.random() * upperCase.length)] + lowerCase[Math.floor(Math.random() * lowerCase.length)]
+  // } else if (specialChoice) {
+  //   let totalPossibleCharacters = upperCase[Math.floor(Math.random() * upperCase.length)] + lowerCase[Math.floor(Math.random() * lowerCase.length)]
+  // }
 
-
+  // for (i = 1; i <= length; i++) {
+  //   password += upperCase[Math.floor(Math.random() * upperCase.length)]
+  //   console.log(i)
+  // }
 
 
 
