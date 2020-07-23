@@ -21,7 +21,29 @@ function generatePassword() {
       password += upperCase[Math.floor(Math.random() * upperCase.length)]
       console.log(i)
     }
+  } else if (lowerChoice) {
+    for (i = 1; i <= length; i++) {
+      password += lowerCase[Math.floor(Math.random() * lowerCase.length)]
+      console.log(i)
+    }
+  } else if (numberChoice) {
+    for (i = 1; i <= length; i++) {
+      password += numbers[Math.floor(Math.random() * numbers.length)]
+      console.log(i)
+    }
+  } else if (specialChoice) {
+    for (i = 1; i <= length; i++) {
+      password += special[Math.floor(Math.random() * special.length)]
+      console.log(i)
+    }
   }
+
+
+
+
+
+
+
   return password
 }
 
