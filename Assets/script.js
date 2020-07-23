@@ -3,7 +3,7 @@ var generateBtn = document.querySelector("#generate");
 
 
 
-
+// First lets create a function and call it generatePassword.
 function generatePassword() {
 
   let upperCase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
@@ -71,7 +71,8 @@ function generatePassword() {
 
       // If the randomization fails to use at least one of each character type that the use chose, we reset the array and password;then try again
       totalPossibleCharacters = []
-      password = ''
+      // reset the loop
+      i = 0
       //randomly assigns a character type to each character of the password, stored in array pwType
       for (i = 0; i < length; i++) {
         totalPossibleCharacters.push(possibleTypes[Math.floor(Math.random() * possibleTypes.length)])
