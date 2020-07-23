@@ -6,7 +6,6 @@ let upperCase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M'
 let lowerCase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 let numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
 let special = ['+', '-', '&', '!', '(', ')', '{', '}', '[', ']', '^', '~', '*', '?', ':']
-
 let totalPossibleCharacters = []
 
 
@@ -21,27 +20,23 @@ function generatePassword() {
 
 
   if (upperChoice) {
-    for (i = 1; i <= length; i++) {
-      password += upperCase[Math.floor(Math.random() * upperCase.length)]
-      console.log(i)
-    }
-  } else if (lowerChoice) {
-    for (i = 1; i <= length; i++) {
-      password += lowerCase[Math.floor(Math.random() * lowerCase.length)]
-      console.log(i)
-    }
-  } else if (numberChoice) {
-    for (i = 1; i <= length; i++) {
-      password += numbers[Math.floor(Math.random() * numbers.length)]
-      console.log(i)
-    }
-  } else if (specialChoice) {
-    for (i = 1; i <= length; i++) {
-      password += special[Math.floor(Math.random() * special.length)]
-      console.log(i)
-    }
+    totalPossibleCharacters.push.apply(totalPossibleCharacters, upperCase)
+  }
+  if (lowerChoice) {
+    totalPossibleCharacters.push.apply(totalPossibleCharacters, lowerCase)
+  }
+  if (numberChoice) {
+    totalPossibleCharacters.push.apply(totalPossibleCharacters, numbers)
+  }
+  if (specialChoice) {
+    totalPossibleCharacters.push.apply(totalPossibleCharacters, special)
   }
 
+  console.log(totalPossibleCharacters)
+
+  for (i = 1; i <= length; i++) {
+    password += totalPossibleCharacters[Math.floor(Math.random() * totalPossibleCharacters.length)]
+  }
   // if (upperChoice) {
   //   let totalPossibleCharacters = upperCase[Math.floor(Math.random() * upperCase.length)]
   // } else if (upperChoice && lowerChoice) {
