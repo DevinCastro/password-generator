@@ -18,10 +18,16 @@ function generatePassword() {
   let specialChoice = confirm('Would you like special characters?')
   let password = ''
 
+
+  
+
+  // This is the fail safe for the length of Characters.  If user enters a number outisde of 8-128.  The Error message will display
   if (length < 8 || length > 128) {
     return 'Error: Please choose a password between 8 and 128 characters.'
   }
 
+
+  // This series of if statements pushes elements that that user choses into a master array containing all possible characters
   if (upperChoice) {
     totalPossibleCharacters.push.apply(totalPossibleCharacters, upperCase)
   }
