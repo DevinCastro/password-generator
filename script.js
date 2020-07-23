@@ -2,14 +2,15 @@
 var generateBtn = document.querySelector("#generate");
 
 
-let upperCase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-let lowerCase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-let numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
-let special = ['+', '-', '&', '!', '(', ')', '{', '}', '[', ']', '^', '~', '*', '?', ':']
-let totalPossibleCharacters = []
 
 
 function generatePassword() {
+
+  let upperCase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+  let lowerCase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+  let numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+  let special = ['+', '-', '&', '!', '(', ')', '{', '}', '[', ']', '^', '~', '*', '?', ':']
+  let totalPossibleCharacters = []
   let length = prompt('How many characters would you like the password to be? (Between 8-128)')
   let upperChoice = confirm('Would you like upper case characters?')
   let lowerChoice = confirm('Would you like lower case characters?')
@@ -17,7 +18,9 @@ function generatePassword() {
   let specialChoice = confirm('Would you like special characters?')
   let password = ''
 
-
+  if (length < 8 || length > 128) {
+    return 'Error: Please choose a password between 8 and 128 characters.'
+  }
 
   if (upperChoice) {
     totalPossibleCharacters.push.apply(totalPossibleCharacters, upperCase)
@@ -32,28 +35,15 @@ function generatePassword() {
     totalPossibleCharacters.push.apply(totalPossibleCharacters, special)
   }
 
+
+  if (totalPossibleCharacters.length === 0) {
+    return 'Error: Please choose at least one character type.'
+  }
   console.log(totalPossibleCharacters)
 
   for (i = 1; i <= length; i++) {
     password += totalPossibleCharacters[Math.floor(Math.random() * totalPossibleCharacters.length)]
   }
-  // if (upperChoice) {
-  //   let totalPossibleCharacters = upperCase[Math.floor(Math.random() * upperCase.length)]
-  // } else if (upperChoice && lowerChoice) {
-  //   let totalPossibleCharacters = upperCase[Math.floor(Math.random() * upperCase.length)] + lowerCase[Math.floor(Math.random() * lowerCase.length)]
-  // } else if (numberChoice) {
-  //   let totalPossibleCharacters = upperCase[Math.floor(Math.random() * upperCase.length)] + lowerCase[Math.floor(Math.random() * lowerCase.length)]
-  // } else if (specialChoice) {
-  //   let totalPossibleCharacters = upperCase[Math.floor(Math.random() * upperCase.length)] + lowerCase[Math.floor(Math.random() * lowerCase.length)]
-  // }
-
-  // for (i = 1; i <= length; i++) {
-  //   password += upperCase[Math.floor(Math.random() * upperCase.length)]
-  //   console.log(i)
-  // }
-
-
-
 
   return password
 }
