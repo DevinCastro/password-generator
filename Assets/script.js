@@ -6,23 +6,22 @@ var generateBtn = document.querySelector("#generate");
 // First lets create a function and call it generatePassword.
 const generatePassword = _ => {
 
+
+  // Create 4 arrays that contain each possible character for the corresponding type
   let upperCase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
   let lowerCase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
   let numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
   let special = ['+', '-', '&', '!', '(', ')', '{', '}', '[', ']', '^', '~', '*', '?', ':']
 
+  // create an array to contain the TYPES of characters that the user wants in the password
   let possibleTypes = []
+
+  // create an array that will contain all possible types of characters for the length of the password the user wants
   let totalPossibleCharacters = []
 
-  let length = prompt('How many characters would you like the password to be? (Between 8-128)')
-  let upperChoice = confirm('Would you like upper case characters?')
-  let lowerChoice = confirm('Would you like lower case characters?')
-  let numberChoice = confirm('Would you like numbers?')
-  let specialChoice = confirm('Would you like special characters?')
   let password = ''
-
-
-
+  // prompt the user to 
+  let length = prompt('How many characters would you like the password to be? (Between 8-128)')
 
   // This is the fail safe for the length of Characters.  If user enters a number outisde of 8-128.  The Error message will display
   if (length < 8 || length > 128) {
@@ -30,7 +29,14 @@ const generatePassword = _ => {
   }
 
 
-  // This series of if statements pushes elements that that user choses into a master array containing all possible characters
+
+  // Prompt user to select different character types
+  let upperChoice = confirm('Would you like upper case characters?')
+  let lowerChoice = confirm('Would you like lower case characters?')
+  let numberChoice = confirm('Would you like numbers?')
+  let specialChoice = confirm('Would you like special characters?')
+
+  // This series of if statements pushes the "types" of characters that that user chooses into the array called possibleTypes
   if (upperChoice) {
     possibleTypes.push('upperCase')
   }
@@ -81,8 +87,11 @@ const generatePassword = _ => {
   }
 
 
+
+  // Create a loop that passes and index through the totalPossibleCharacters array ('length' many times) and concatenate our password string
   for (let i = 0; i < length; i++) {
 
+    // these conditional statments cover the possible character types that 'totalPossibleCharacters" can be
     if (totalPossibleCharacters[i] === 'upperCase') {
       password += upperCase[Math.floor(Math.random() * upperCase.length)]
     } else if (totalPossibleCharacters[i] === 'lowerCase') {
@@ -93,6 +102,8 @@ const generatePassword = _ => {
       password += special[Math.floor(Math.random() * special.length)]
     }
   }
+
+  // this ends the function and assigns the value of password to the function
   return password
 }
 
